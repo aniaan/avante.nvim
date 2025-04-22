@@ -2573,7 +2573,6 @@ function Sidebar:create_input_container()
     callback = function() vim.cmd("noautocmd stopinsert") end,
   })
 
-  -- Show hint in insert mode
   api.nvim_create_autocmd("ModeChanged", {
     group = self.augroup,
     pattern = "*:i",
