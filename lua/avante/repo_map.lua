@@ -106,18 +106,7 @@ function RepoMap._get_repo_map(file_ext)
     build_and_save()
     if not repo_map then return end
   else
-    local timer = vim.loop.new_timer()
-
-    if timer then
-      timer:start(
-        0,
-        0,
-        vim.schedule_wrap(function()
-          build_and_save()
-          timer:close()
-        end)
-      )
-    end
+    vim.schedule(function() build_and_save() end)
   end
 
   local update_repo_map = vim.schedule_wrap(function(rel_filepath)
